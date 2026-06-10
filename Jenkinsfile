@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r  requiremenst.txt'
+                sh 'pip install -r  requirements.txt'
             }
         
         }  
