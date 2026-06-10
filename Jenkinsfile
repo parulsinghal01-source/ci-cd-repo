@@ -30,7 +30,7 @@ pipeline {
         }  
         stage('Run tests') {
             steps {
-                sh 'phython3 -m pytest test/'
+                sh 'python3 -m pytest test/'
             }
         }
         stage('Code Quality') {
