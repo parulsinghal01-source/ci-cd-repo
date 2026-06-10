@@ -35,8 +35,8 @@ pipeline {
             }
         }
         stage('Code Quality') {
-            steps {
-                sh 'flake8 app/'
+           steps {
+               sh 'python3 -m flake8 app/'
             }
         }   
         stage('Release Versioning') {
