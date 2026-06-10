@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/parulsinghal01-source/ci-cd-repo'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'pip install -r  requiremenst.txt'
+            }
+        
+        }  
+        stage('Run tests') {
+            steps {
+                sh 'pytest test/'
+            }
+        }
+        stage('Code Quality') {
+            steps {
+                sh 'flake8 app/'
+            }
+        }   
+        stage('Release Versioning') {
+            steps {
+                sh './scripts/release.sh'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh './scripts/deploy.sh'
+            }
+        }
+
+    }
+}
