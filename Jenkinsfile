@@ -8,6 +8,16 @@ pipeline {
                 url: 'https://github.com/parulsinghal01-source/ci-cd-repo'
             }
         }
+	stage('Verify Environment') {
+		steps {
+		   sh '''
+                      which python3
+                      python3 --version
+                      python3 -m pip list
+                      pytest --version || true
+                  '''
+    }
+}
         stage('Install Dependencies') {
             steps {
                 sh '''
@@ -20,7 +30,7 @@ pipeline {
         }  
         stage('Run tests') {
             steps {
-                sh 'pytest test/'
+                sh 'phython3 -m pytest test/'
             }
         }
         stage('Code Quality') {
