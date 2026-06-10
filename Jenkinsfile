@@ -34,11 +34,11 @@ pipeline {
                 sh 'python3 -m pytest test/'
             }
         }
-##        stage('Code Quality') {
-##            steps {
-##               sh 'flake8 app/'
-##            }
-##        }   
+        stage('Code Quality') {
+            steps {
+                sh 'flake8 app/'
+            }
+        }   
         stage('Release Versioning') {
             steps {
                 sh './scripts/release.sh'
